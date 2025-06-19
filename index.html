@@ -18,28 +18,56 @@
 </head>
 <body>
 
-    <!-- Cabeçalho e Navegação -->
+    <!-- Cabeçalho com Seletor de Idioma -->
     <header>
-        <!-- ... (código do cabeçalho continua o mesmo) ... -->
+        <div class="container">
+            <nav>
+                <a href="#" class="nav-link" data-pt="Início" data-en="Home">Início</a>
+            </nav>
+            <div class="lang-switcher">
+                <button id="lang-switch-btn" data-lang-pt="English" data-lang-en="Português">English</button>
+            </div>
+        </div>
     </header>
 
     <main>
-        <!-- Seção Hero -->
+        <!-- Seção Principal com o Título em Texto -->
         <section id="hero">
-            <!-- ... (código da seção hero continua o mesmo) ... -->
+            <div class="hero-overlay"></div>
+            <div class="hero-content container">
+                <h1 class="game-title">SAVAMPTION</h1>
+                <p class="release-date" data-pt="Lançamento em 2025" data-en="Coming in 2025">Lançamento em 2025</p>
+                <p class="tagline" data-pt="Você tem certeza que sua realidade... é real?" data-en="Are you sure your reality... is even real?">Você tem certeza que sua realidade... é real?</p>
+            </div>
         </section>
 
         <!-- Seção Sobre o Jogo -->
         <section id="sobre" class="fade-in">
-            <!-- ... (código da seção sobre continua o mesmo) ... -->
+            <div class="container">
+                <h2 data-pt="Uma História de Terror Psicológico" data-en="A Psychological Horror Story">Uma História de Terror Psicológico</h2>
+                <div class="about-content">
+                    <img src="images/samuel.png" alt="Personagem Samuel" class="about-image pixel-art">
+                    <div class="about-text">
+                        <p data-pt="Savamption é um jogo de terror psicológico narrativo com elementos de sobrevivência e uma atmosfera densa e opressiva. Você joga como Samuel, um jovem profundamente marcado por traumas, que retorna à floresta onde foi criado — não por uma família, mas por um culto canibal que um dia o preparou como uma oferenda a uma entidade cósmica." data-en="Savamption is a narrative-driven psychological horror game with survival elements and a thick, oppressive atmosphere. You play as Samuel, a young man deeply scarred by trauma, who returns to the forest where he was raised — not by a family, but by a cannibal cult that once prepared him as an offering to a cosmic entity.">
+                            Savamption é um jogo de terror psicológico narrativo com elementos de sobrevivência e uma atmosfera densa e opressiva. Você joga como Samuel, um jovem profundamente marcado por traumas, que retorna à floresta onde foi criado — não por uma família, mas por um culto canibal que um dia o preparou como uma oferenda a uma entidade cósmica.
+                        </p>
+                        <h3 data-pt="Ficha Técnica" data-en="Game Details">Ficha Técnica</h3>
+                        <ul>
+                            <li><strong><span data-pt="Desenvolvedor" data-en="Developer">Desenvolvedor</span>:</strong> Arthur Viana Studio</li>
+                            <li><strong><span data-pt="Gênero" data-en="Genre">Gênero</span>:</strong> <span data-pt="Terror Psicológico, Sobrevivência" data-en="Psychological Horror, Survival">Terror Psicológico, Sobrevivência</span></li>
+                            <li><strong><span data-pt="Gráficos" data-en="Graphics">Gráficos</span>:</strong> <span data-pt="Pixel Art 2D - Visão Top-Down" data-en="2D Pixel Art - Top-Down">Pixel Art 2D - Visão Top-Down</span></li>
+                            <li><strong>Engine:</strong> Construct 2</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <!-- Seção de Mídia ATUALIZADA -->
+        <!-- Seção de Mídia -->
         <section id="media" class="fade-in">
             <div class="container">
                 <h2 data-pt="Galeria" data-en="Gallery">Galeria</h2>
                 <div class="gallery-grid">
-                    <!-- Cada imagem agora é um link clicável -->
                     <a href="images/floresta2.png" class="gallery-item">
                         <img src="images/floresta2.png" alt="Screenshot do jogo Savamption na floresta com um rio" class="pixel-art">
                     </a>
@@ -50,13 +78,13 @@
             </div>
         </section>
 
-        <!-- Seção de Newsletter (VEJA A PARTE 2 ABAIXO) -->
+        <!-- Seção de Newsletter (100% Funcional) -->
         <section id="newsletter" class="fade-in">
             <div class="container">
                 <h2 data-pt="A Escuridão se Aproxima" data-en="The Darkness is Coming">A Escuridão se Aproxima</h2>
                 <p data-pt="Inscreva-se para receber notícias sobre o desenvolvimento e o lançamento." data-en="Subscribe to receive news about development and the official launch.">Inscreva-se para receber notícias sobre o desenvolvimento e o lançamento.</p>
                 
-                <!-- Formulário que VAI FUNCIONAR com o serviço gratuito -->
+                <!-- FORMULÁRIO REAL APONTANDO PARA SUA CONTA FORMSPREE -->
                 <form action="https://formspree.io/f/xjkrekvb" method="POST" id="newsletter-form">
                     <input type="email" name="email" placeholder="seu-email@exemplo.com" required>
                     <button type="submit" class="cta-button" data-pt="Inscrever-se" data-en="Subscribe">Inscrever-se</button>
