@@ -3,83 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arthur Viana Games - Savamption</title>
+    <title>Arthur Viana Games - Savamption (2025)</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
+    <!-- Biblioteca Lightbox (para o zoom) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css">
+
     <!-- Seu CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Cabeçalho com Seletor de Idioma -->
+    <!-- Cabeçalho e Navegação -->
     <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="nav-link" data-pt="Início" data-en="Home">Início</a>
-            </nav>
-            <div class="lang-switcher">
-                <button id="lang-switch-btn" data-lang-pt="English" data-lang-en="Português">English</button>
-            </div>
-        </div>
+        <!-- ... (código do cabeçalho continua o mesmo) ... -->
     </header>
 
     <main>
-        <!-- Seção Principal com o Logo Real -->
+        <!-- Seção Hero -->
         <section id="hero">
-            <div class="hero-overlay"></div>
-            <div class="hero-content container">
-                <img src="images/savamption_logo.png" alt="Logo do jogo Savamption" class="game-logo-img">
-                <p class="tagline" data-pt="Você tem certeza que sua realidade... é real?" data-en="Are you sure your reality... is even real?">Você tem certeza que sua realidade... é real?</p>
-            </div>
+            <!-- ... (código da seção hero continua o mesmo) ... -->
         </section>
 
-        <!-- Seção Sobre o Jogo com a imagem do Samuel -->
+        <!-- Seção Sobre o Jogo -->
         <section id="sobre" class="fade-in">
-            <div class="container">
-                <h2 data-pt="Uma História de Terror Psicológico" data-en="A Psychological Horror Story">Uma História de Terror Psicológico</h2>
-                <div class="about-content">
-                    <img src="images/samuel.png" alt="Personagem Samuel" class="about-image pixel-art">
-                    <div class="about-text">
-                        <p data-pt="Savamption é um jogo de terror psicológico narrativo com elementos de sobrevivência e uma atmosfera densa e opressiva. Você joga como Samuel, um jovem profundamente marcado por traumas, que retorna à floresta onde foi criado — não por uma família, mas por um culto canibal que um dia o preparou como uma oferenda a uma entidade cósmica." data-en="Savamption is a narrative-driven psychological horror game with survival elements and a thick, oppressive atmosphere. You play as Samuel, a young man deeply scarred by trauma, who returns to the forest where he was raised — not by a family, but by a cannibal cult that once prepared him as an offering to a cosmic entity.">
-                            Savamption é um jogo de terror psicológico narrativo com elementos de sobrevivência e uma atmosfera densa e opressiva. Você joga como Samuel, um jovem profundamente marcado por traumas, que retorna à floresta onde foi criado — não por uma família, mas por um culto canibal que um dia o preparou como uma oferenda a uma entidade cósmica.
-                        </p>
-                        
-                        <h3 data-pt="Ficha Técnica" data-en="Game Details">Ficha Técnica</h3>
-                        <ul>
-                            <li><strong data-pt="Desenvolvedor" data-en="Developer">Desenvolvedor:</strong> Arthur Viana Studio</li>
-                            <li><strong data-pt="Gênero" data-en="Genre">Gênero:</strong> <span data-pt="Terror Psicológico, Sobrevivência" data-en="Psychological Horror, Survival">Terror Psicológico, Sobrevivência</span></li>
-                            <li><strong data-pt="Gráficos" data-en="Graphics">Gráficos:</strong> <span data-pt="Pixel Art 2D - Visão Top-Down" data-en="2D Pixel Art - Top-Down">Pixel Art 2D - Visão Top-Down</span></li>
-                            <li><strong data-pt="Engine" data-en="Engine">Engine:</strong> Construct 2</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <!-- ... (código da seção sobre continua o mesmo) ... -->
         </section>
 
-        <!-- Seção de Mídia com as screenshots reais -->
+        <!-- Seção de Mídia ATUALIZADA -->
         <section id="media" class="fade-in">
             <div class="container">
                 <h2 data-pt="Galeria" data-en="Gallery">Galeria</h2>
                 <div class="gallery-grid">
-                    <img src="images/floresta2.png" alt="Screenshot do jogo Savamption na floresta com um rio" class="pixel-art">
-                    <img src="images/floresta1.png" alt="Screenshot do jogo Savamption na floresta com um carro" class="pixel-art">
+                    <!-- Cada imagem agora é um link clicável -->
+                    <a href="images/floresta2.png" class="gallery-item">
+                        <img src="images/floresta2.png" alt="Screenshot do jogo Savamption na floresta com um rio" class="pixel-art">
+                    </a>
+                    <a href="images/floresta1.png" class="gallery-item">
+                        <img src="images/floresta1.png" alt="Screenshot do jogo Savamption na floresta com um carro" class="pixel-art">
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Seção de Newsletter -->
+        <!-- Seção de Newsletter (VEJA A PARTE 2 ABAIXO) -->
         <section id="newsletter" class="fade-in">
             <div class="container">
                 <h2 data-pt="A Escuridão se Aproxima" data-en="The Darkness is Coming">A Escuridão se Aproxima</h2>
-                <p data-pt="Inscreva-se para não perder o lançamento e receber conteúdo exclusivo." data-en="Subscribe to not miss the launch and receive exclusive content.">Inscreva-se para não perder o lançamento e receber conteúdo exclusivo.</p>
-                <form id="newsletter-form">
-                    <input type="email" id="email-input" placeholder="seu-email@exemplo.com" required>
+                <p data-pt="Inscreva-se para receber notícias sobre o desenvolvimento e o lançamento." data-en="Subscribe to receive news about development and the official launch.">Inscreva-se para receber notícias sobre o desenvolvimento e o lançamento.</p>
+                
+                <!-- Formulário que VAI FUNCIONAR com o serviço gratuito -->
+                <form action="https://formspree.io/f/xjkrekvb" method="POST" id="newsletter-form">
+                    <input type="email" name="email" placeholder="seu-email@exemplo.com" required>
                     <button type="submit" class="cta-button" data-pt="Inscrever-se" data-en="Subscribe">Inscrever-se</button>
                 </form>
+
             </div>
         </section>
     </main>
@@ -91,6 +73,9 @@
         </div>
     </footer>
 
+    <!-- Biblioteca Lightbox JS (para o zoom) -->
+    <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
+    
     <!-- Seu JavaScript -->
     <script src="script.js"></script>
 </body>
