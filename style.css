@@ -10,20 +10,68 @@ body {
     font-family: var(--font-body); background-color: var(--dark-bg);
     background-image: radial-gradient(circle, #1a1a1a, #0a0a0a 70%);
     color: var(--text-color); line-height: 1.7;
+    overflow-x: hidden; /* Previne scroll horizontal causado por animações */
 }
 .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 h2 { font-family: var(--font-title); color: var(--primary-color); margin-bottom: 20px; font-size: 2.5rem; text-align: center; }
 .pixel-art { image-rendering: pixelated; image-rendering: crisp-edges; }
 
-/* ---- CABEÇALHO E IDIOMA ---- */
+/* ---- NOVAS ANIMAÇÕES GLOBAIS ---- */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes revealTitle {
+    from { opacity: 0; transform: translateY(40px); letter-spacing: 20px; }
+    to { opacity: 1; transform: translateY(0); letter-spacing: 8px; }
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slowZoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+@keyframes flicker {
+    0%, 100% { text-shadow: 0 0 25px var(--primary-color); opacity: 1; }
+    50% { text-shadow: 0 0 10px var(--primary-color); opacity: 0.7; }
+}
+
+/* ---- CABEÇALHO E IDIOMA COM ANIMAÇÃO ---- */
 header {
     background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px);
     border-bottom: 1px solid #222; padding: 15px 0; position: fixed;
     width: 100%; top: 0; z-index: 1000;
+    animation: fadeInDown 1s ease-out forwards;
 }
 header .container { display: flex; justify-content: space-between; align-items: center; }
+
+/* NOVO: Estilo para a barra de navegação */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Espaço entre "Início" e "Testar Demo" */
+}
+
 .nav-link { color: var(--text-color); text-decoration: none; font-weight: 700; transition: color 0.3s ease; font-size: 1.2em; }
 .nav-link:hover { color: var(--primary-color); }
+
+/* NOVO: Estilo específico para o botão da DEMO */
+.demo-link {
+    border: 2px solid var(--primary-color);
+    padding: 6px 16px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 1em; /* Um pouco menor para não competir com "Início" */
+}
+.demo-link:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(185, 28, 28, 0.5);
+}
+
 #lang-switch-btn {
     background-color: transparent; border: 1px solid var(--text-color);
     color: var(--text-color); padding: 8px 16px; cursor: pointer;
@@ -32,10 +80,11 @@ header .container { display: flex; justify-content: space-between; align-items: 
 }
 #lang-switch-btn:hover { background-color: var(--primary-color); border-color: var(--primary-color); }
 
-/* ---- SEÇÃO HERO COM TÍTULO ATUALIZADO ---- */
+/* ---- SEÇÃO HERO COM ANIMAÇÕES ATUALIZADAS ---- */
 #hero {
     height: 100vh; background: url('images/floresta2.png') no-repeat center center/cover;
     position: relative; display: flex; align-items: center; justify-content: center; text-align: center;
+    animation: slowZoom 25s infinite alternate ease-in-out;
 }
 .hero-overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
@@ -43,19 +92,23 @@ header .container { display: flex; justify-content: space-between; align-items: 
 }
 .hero-content { position: relative; z-index: 10; }
 .game-title {
-    font-family: var(--font-title); font-size: 7rem; letter-spacing: 8px;
+    font-family: var(--font-title); font-size: 7rem;
     color: var(--primary-color); 
-    /* CORREÇÃO: "Borrão" agora é vermelho, usando a cor primária */
     text-shadow: 0 0 25px var(--primary-color);
-    animation: flicker 8s infinite alternate;
+    animation: revealTitle 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards,
+               flicker 8s infinite alternate 2.2s;
+    opacity: 0;
 }
-.release-date {
-    font-family: var(--font-body); font-size: 1.5rem; color: #ccc;
-    margin-top: -10px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px;
+.release-date, .tagline {
+    font-family: var(--font-body); color: #ccc;
+    text-transform: uppercase; letter-spacing: 2px;
+    animation: fadeInUp 1.5s ease-out forwards;
+    opacity: 0;
 }
-.tagline { font-size: 1.2rem; color: #aaa; font-style: italic; }
+.release-date { font-size: 1.5rem; margin-top: -10px; margin-bottom: 20px; animation-delay: 0.8s; }
+.tagline { font-size: 1.2rem; font-style: italic; color: #aaa; animation-delay: 1.2s; }
 
-/* ---- SEÇÕES GERAIS E SOBRE ---- */
+/* ---- SEÇÕES GERAIS E SOBRE (COM ANIMAÇÃO DE SCROLL) ---- */
 section { padding: 100px 0; }
 .about-content { display: flex; gap: 50px; align-items: center; }
 .about-image { max-width: 300px; width: 100%; border-radius: 5px; border: 4px solid #222; }
@@ -63,58 +116,57 @@ section { padding: 100px 0; }
 .about-text ul { list-style: none; padding-left: 0; }
 .about-text ul li { margin-bottom: 12px; }
 
+/* ---- CONTROLE DAS ANIMAÇÕES DE SCROLL ---- */
+.fade-in { opacity: 0; transition: opacity 0.6s ease-out; }
+.fade-in.visible { opacity: 1; }
+.anim-slide-left, .anim-slide-right {
+    opacity: 0;
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.anim-slide-left { transform: translateX(-50px); }
+.anim-slide-right { transform: translateX(50px); }
+.fade-in.visible .anim-slide-left,
+.fade-in.visible .anim-slide-right {
+    opacity: 1;
+    transform: translateX(0);
+}
+.fade-in.visible .anim-slide-right {
+    transition-delay: 0.2s;
+}
+
 /* ---- MÍDIA E GALERIA ATUALIZADA ---- */
 .gallery-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px; margin-top: 40px;
 }
-/* CORREÇÃO: Remove o "bug azul" de links em imagens */
-.gallery-item {
-    display: block; /* Garante que o link se comporte como um bloco */
-    text-decoration: none; /* Remove sublinhado */
-    color: inherit; /* Impede a herança da cor azul de links */
-}
+.gallery-item { display: block; text-decoration: none; color: inherit; }
 .gallery-grid img {
     width: 100%; border-radius: 5px; border: 2px solid #333;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.215, 0.610, 0.355, 1.000), box-shadow 0.4s ease;
     display: block;
     cursor: zoom-in;
 }
 .gallery-grid img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(185, 28, 28, 0.5);
+    transform: scale(1.05) translateY(-8px);
+    box-shadow: 0 10px 30px rgba(185, 28, 28, 0.6);
 }
 
-/* ---- NEWSLETTER E BOTÃO ---- */
-#newsletter { text-align: center; }
-#newsletter-form { margin-top: 30px; display: flex; justify-content: center; gap: 10px; }
-#newsletter-form input {
-    width: 350px; padding: 15px; border-radius: 5px; border: 2px solid #333;
-    background: #222; color: var(--text-color); font-size: 1rem;
-}
-#newsletter-form input:focus { outline: none; border-color: var(--primary-color); }
-.cta-button {
-    background: var(--primary-color); color: #fff; padding: 15px 35px;
-    border: none; border-radius: 5px; font-weight: 700; cursor: pointer;
-    transition: all 0.3s ease;
-}
-.cta-button:hover { background: var(--primary-hover); transform: translateY(-3px); }
-
-/* ---- RODAPÉ E ANIMAÇÕES ---- */
+/* ---- RODAPÉ ---- */
 footer { background: #000; text-align: center; padding: 40px 0; border-top: 1px solid #222; font-size: 0.9em; color: #666; }
-@keyframes flicker {
-    0%, 100% { text-shadow: 0 0 25px var(--primary-color); opacity: 1; }
-    50% { text-shadow: 0 0 10px var(--primary-color); opacity: 0.7; }
-}
-.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
 
 /* ---- RESPONSIVIDADE (CELULAR) ---- */
 @media (max-width: 768px) {
     .game-title { font-size: 3.5rem; letter-spacing: 4px; }
+    @keyframes revealTitle {
+        from { opacity: 0; transform: translateY(40px); letter-spacing: 15px; }
+        to { opacity: 1; transform: translateY(0); letter-spacing: 4px; }
+    }
     .release-date { font-size: 1.2rem; }
     .tagline { font-size: 1.1rem; }
     .about-content { flex-direction: column; }
-    #newsletter-form { flex-direction: column; align-items: center; }
-    #newsletter-form input { width: 100%; max-width: 400px; }
+    .anim-slide-left, .anim-slide-right { transform: translateY(50px); }
+    .fade-in.visible .anim-slide-left,
+    .fade-in.visible .anim-slide-right {
+        transform: translateY(0);
+    }
 }
